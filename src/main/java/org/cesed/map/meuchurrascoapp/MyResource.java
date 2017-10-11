@@ -5,7 +5,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 /**
  * Root resource (exposed at "myresource" path)
@@ -14,7 +13,7 @@ import javax.ws.rs.core.Response;
 public class MyResource {
 	
     @GET
-    @Path("/getAll")
+    @Path("/getall")
     @Produces(MediaType.TEXT_PLAIN)
     public String getIt() {
         return "Get it!";
@@ -22,11 +21,10 @@ public class MyResource {
     }
     
     @GET
-    @Path("/getOne/{id}")
+    @Path("/getone/{id}")
     @Produces(MediaType.TEXT_PLAIN)
     public String retrieveSomething(@PathParam("id") String id) {
         return "got it" +id;
     }
-    
          
 }
