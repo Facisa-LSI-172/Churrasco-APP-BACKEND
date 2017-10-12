@@ -9,10 +9,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.cesed.map.meuchurrascoapp.base.BaseBean;
+
 @Entity
 @Table(name = "usuario")
-public class Usuario {
-	
+public class Usuario extends BaseBean{
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	@Column(name= "id_usuario")
