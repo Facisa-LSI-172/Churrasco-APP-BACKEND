@@ -1,6 +1,5 @@
 package org.cesed.map.meuchurrascoapp.entities;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,10 +9,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.cesed.map.meuchurrascoapp.base.BaseBean;
+
 @Entity
 @Table(name = "usuario")
-public class Usuario extends BaseBean {
-	
+public class Usuario extends BaseBean{
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	@Column(name= "id_usuario")
@@ -27,6 +30,10 @@ public class Usuario extends BaseBean {
 	
 	@Transient
 	private List<Contribuicao> listaContribuicoes;
+	
+	public void setId(Integer id){
+		this.id = id;
+	}
 	
 	public String getNome() {
 		return nome;

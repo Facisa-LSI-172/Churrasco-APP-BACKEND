@@ -24,6 +24,14 @@ public class Local extends BaseBean{
 	
 	@Column(name = "longitude")
 	private String longitude;
+	
+	public void setId(Integer id){
+		this.id = id;
+	}
+	
+	public Integer getId(){
+		return this.id;
+	}
 
 	public String getLatitude() {
 		return latitude;
