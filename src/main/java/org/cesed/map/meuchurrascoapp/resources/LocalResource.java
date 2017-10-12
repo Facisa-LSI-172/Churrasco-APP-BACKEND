@@ -12,8 +12,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.cesed.map.meuchurrascoapp.entities.Local;
-import org.cesed.map.meuchurrascoapp.entities.Usuario;
-import org.cesed.map.meuchurrascoapp.services.UsuarioService;
+import org.cesed.map.meuchurrascoapp.services.LocalService;
 
 @Path("local")
 public class LocalResource {
@@ -37,7 +36,7 @@ public class LocalResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Local cadastrarLocal(Local local) {
-    	return new UsuarioService().cadastrarLocal(local);
+    	return new LocalService().cadastrarLocal(local);
     }
     
     @PUT
@@ -45,7 +44,7 @@ public class LocalResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
 	public Local atualizarLocal(Local local){
-    	return new UsuarioService().atualizarLocal(local);
+    	return new LocalService().atualizarLocal(local);
     }
     
     @DELETE
@@ -53,7 +52,7 @@ public class LocalResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response excluirLocal(@PathParam("id") String id, Local local){
-    	new UsuarioService().excluirLocal(local);
+    	new LocalService().excluirLocal(local);
     	return Response.status(200).build();
     }
 	
