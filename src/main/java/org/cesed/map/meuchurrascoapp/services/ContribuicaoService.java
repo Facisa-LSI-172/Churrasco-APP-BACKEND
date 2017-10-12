@@ -7,7 +7,7 @@ import org.cesed.map.meuchurrascoapp.entities.Contribuicao;
 
 public class ContribuicaoService {
 
-	private ContribuicaoDao contribuicaoDao;
+	private ContribuicaoDao contribuicaoDao = new ContribuicaoDao();
 	
 	public Contribuicao cadastrarContribuicao(Contribuicao contribuicao){
 		return contribuicaoDao.save(contribuicao);
@@ -17,15 +17,15 @@ public class ContribuicaoService {
 		return contribuicaoDao.findAll();
 	}
 	
-	public Contribuicao getEventoPorId(Integer id){
+	public Contribuicao getContribuicaoPorId(Integer id){
 		return contribuicaoDao.findById(id);
 	}
 	
-	public Contribuicao atualizarEvento(Contribuicao contribuicao){
+	public Contribuicao atualizarContribuicao(Contribuicao contribuicao){
 		return contribuicaoDao.update(contribuicao);
 	}
 	
-	public void excluirEvento(Contribuicao contribuicao){
+	public void excluirContribuicao(Contribuicao contribuicao){
 		contribuicaoDao.remove(contribuicao);
 	}
 	

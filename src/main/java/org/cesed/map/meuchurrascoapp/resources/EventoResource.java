@@ -35,7 +35,7 @@ public class EventoResource {
     @Path("/cadastrar")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Evento cadastrarUsuario(Evento evento) {
+    public Evento cadastrarEvento(Evento evento) {
     	return new EventoService().cadastrarEvento(evento);
     }
     
@@ -43,7 +43,7 @@ public class EventoResource {
     @Path("/atualizar/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-	public Evento atualizarUsuario(Evento evento){
+	public Evento atualizarEvento(Evento evento){
     	return new EventoService().atualizarEvento(evento);
     }
     
@@ -51,7 +51,7 @@ public class EventoResource {
     @Path("/excluir/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response excluirUsuario(@PathParam("id") String id, Evento evento){
+    public Response excluirEvento(@PathParam("id") String id, Evento evento){
     	new EventoService().excluirEvento(evento);
     	return Response.status(200).build();
     }
