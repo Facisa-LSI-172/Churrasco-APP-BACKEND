@@ -7,7 +7,7 @@ import org.cesed.map.meuchurrascoapp.entities.Contribuicao;
 
 public class ContribuicaoService {
 
-	private ContribuicaoDao contribuicaoDao;
+	private ContribuicaoDao contribuicaoDao = new ContribuicaoDao();
 	
 	public Contribuicao cadastrarContribuicao(Contribuicao contribuicao){
 		return contribuicaoDao.save(contribuicao);

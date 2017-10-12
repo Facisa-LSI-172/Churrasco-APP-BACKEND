@@ -23,7 +23,8 @@ public class ContribuicaoResource {
     @Path("/getall")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Contribuicao> getAll() {
-        return new ContribuicaoService().listarTodos();
+		ContribuicaoService contribuicaoService = new ContribuicaoService();
+        return contribuicaoService.listarTodos();
     }
     
     @GET
