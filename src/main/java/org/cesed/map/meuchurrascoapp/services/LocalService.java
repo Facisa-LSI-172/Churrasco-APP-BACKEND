@@ -1,14 +1,34 @@
 package org.cesed.map.meuchurrascoapp.services;
 
+import java.util.List;
+
+import org.cesed.map.meuchurrascoapp.dao.EventoDao;
 import org.cesed.map.meuchurrascoapp.dao.LocalDao;
+import org.cesed.map.meuchurrascoapp.entities.Evento;
 import org.cesed.map.meuchurrascoapp.entities.Local;
 
 public class LocalService {
 
-	private LocalDao localDao = new LocalDao();
+private LocalDao localDao = new LocalDao();
 	
-	public void cadastrarLocal(Local local){
-		localDao.save(local);
+	public Local cadastrarLocal(Local local){
+		return localDao.save(local);
+	}
+	
+	public List<Evento> listarTodos(){
+		return localDao.findAll();
+	}
+	
+	public Evento getLocalPorId(Integer id){
+		return localDao.findById(id);
+	}
+	
+	public Local atualizarLocal(Local local){
+		return localDao.update(local);
+	}
+	
+	public void excluirLocal(Local local){
+		localDao.remove(local);
 	}
 	
 }

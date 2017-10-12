@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "contribuicao")
-public class Contribuicao extends BaseBean {
+public class Contribuicao {
 
 	@Id
 	@GeneratedValue

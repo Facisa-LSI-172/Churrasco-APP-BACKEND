@@ -7,6 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
+import org.cesed.map.meuchurrascoapp.entities.Usuario;
+
 
 @SuppressWarnings("unchecked")
 public abstract class GenericDao<T, PK> {
@@ -59,7 +61,7 @@ public abstract class GenericDao<T, PK> {
 		}
 	}
 	
-	public void update(T entity){
+	public T update(T entity){
 		try{
 			this.beginTransaction();
 			this.entityManager.merge(entity);
@@ -69,6 +71,7 @@ public abstract class GenericDao<T, PK> {
 			this.rollback();
 			throw ex;
 		}
+		return entity;
 	}
 	
 	public void remove(T entity){

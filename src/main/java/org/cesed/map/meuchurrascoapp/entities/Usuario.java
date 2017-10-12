@@ -1,6 +1,5 @@
 package org.cesed.map.meuchurrascoapp.entities;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,7 +11,7 @@ import javax.persistence.Transient;
 
 @Entity
 @Table(name = "usuario")
-public class Usuario extends BaseBean {
+public class Usuario {
 	
 	@Id
 	@GeneratedValue
@@ -27,6 +26,10 @@ public class Usuario extends BaseBean {
 	
 	@Transient
 	private List<Contribuicao> listaContribuicoes;
+	
+	public void setId(Integer id){
+		this.id = id;
+	}
 	
 	public String getNome() {
 		return nome;
