@@ -21,8 +21,8 @@ public class UsuarioService {
 		return usuarioDao.findById(id);
 	}
 	
-	public Usuario atualizarUsuario(Usuario novoUsuario){
-		return usuarioDao.update(novoUsuario);
+	public Usuario atualizarUsuario(Usuario usuarioAntigo){
+		return usuarioDao.update(usuarioAntigo);
 	}
 	
 	public void excluirUsuario(Usuario usuario){
