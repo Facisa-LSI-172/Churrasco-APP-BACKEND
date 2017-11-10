@@ -3,7 +3,7 @@ package org.cesed.map.meuchurrascoapp.services;
 import java.util.List;
 
 import org.cesed.map.meuchurrascoapp.dao.EventoDao;
-import org.cesed.map.meuchurrascoapp.dto.EventoUsuarioDTO;
+import org.cesed.map.meuchurrascoapp.entities.EventoUsuarioDTO;
 import org.cesed.map.meuchurrascoapp.entities.Evento;
 import org.cesed.map.meuchurrascoapp.entities.Usuario;
 

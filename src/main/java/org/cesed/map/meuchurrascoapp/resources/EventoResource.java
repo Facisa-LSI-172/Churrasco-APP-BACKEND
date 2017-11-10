@@ -13,7 +13,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.cesed.map.meuchurrascoapp.dto.EventoUsuarioDTO;
 import org.cesed.map.meuchurrascoapp.entities.Evento;
 import org.cesed.map.meuchurrascoapp.entities.Usuario;
 import org.cesed.map.meuchurrascoapp.services.EventoService;
