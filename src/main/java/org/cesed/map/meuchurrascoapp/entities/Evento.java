@@ -4,42 +4,44 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.cesed.map.meuchurrascoapp.base.BaseBean;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table(name = "evento")
-public class Evento extends BaseBean{
+public class Evento extends BaseBean {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue
 	@Column(name = "id_evento")
 	private Integer id;
-	
+
 	@Column(name = "nome")
 	private String nome;
-	
+
 	@Column(name = "data_evento")
 	private Date data;
-	
+
 	@Column(name = "descricao")
 	private String descricao;
-	
-	@OneToOne
-	@JoinColumn(name="id_local")
+
+	@OneToOne(fetch = FetchType.EAGER)
+	@Cascade({CascadeType.ALL})
+	@JoinColumn(name = "id_local")
 	private Local local;
 
 	@OneToOne
-	@JoinColumn(name="id_usuario")
+	@JoinColumn(name = "id_usuario")
 	private Usuario organizador;
 
 	public Integer getId() {
@@ -89,5 +91,5 @@ public class Evento extends BaseBean{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
+
 }
