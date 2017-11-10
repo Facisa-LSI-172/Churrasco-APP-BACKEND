@@ -3,13 +3,14 @@ package org.cesed.map.meuchurrascoapp.services;
 import java.util.List;
 
 import org.cesed.map.meuchurrascoapp.dao.EventoDao;
-import org.cesed.map.meuchurrascoapp.entities.EventoUsuarioDTO;
+import org.cesed.map.meuchurrascoapp.dao.UsuarioDao;
 import org.cesed.map.meuchurrascoapp.entities.Evento;
 import org.cesed.map.meuchurrascoapp.entities.Usuario;
 
 public class EventoService {
 	
 	private EventoDao eventoDao = new EventoDao();
+	private UsuarioDao usuarioDao = new UsuarioDao();
 	
 	public Evento cadastrarEvento(Evento evento){
 		return eventoDao.save(evento);
@@ -35,10 +36,8 @@ public class EventoService {
 		return eventoDao.buscarParticipantesPorEvento(idEvento);
 	}
 	
-	public void adicionarParticipanteNoEvento(EventoUsuarioDTO eventoUsuarioDTO){
-		Integer idUsuario = eventoUsuarioDTO.getIdUsuario();
-		Integer idEvento = eventoUsuarioDTO.getIdEvento();
-		eventoDao.adicionarParticipanteNoEvento(idEvento, idUsuario);
+	public Evento adicionarParticipanteNoEvento(Evento evento){
+		return eventoDao.adicionarParticipanteNoEvento(evento);
 	}
 	
 }
