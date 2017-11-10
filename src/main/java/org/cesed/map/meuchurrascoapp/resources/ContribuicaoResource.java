@@ -30,8 +30,9 @@ public class ContribuicaoResource {
     @GET
     @Path("/get/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Contribuicao getContribuicao(@PathParam("id") String id) {
-        return new ContribuicaoService().getContribuicaoPorId(Integer.valueOf(id));
+    public Contribuicao getContribuicao(@PathParam("id") String id){
+    	ContribuicaoService contribuicaoService = new ContribuicaoService();
+        return contribuicaoService.getContribuicaoPorId(Integer.valueOf(id));
     }
     
     @POST
@@ -39,7 +40,8 @@ public class ContribuicaoResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Contribuicao cadastrarContribuicao(Contribuicao contribuicao) {
-    	return new ContribuicaoService().cadastrarContribuicao(contribuicao);
+    	ContribuicaoService contribuicaoService = new ContribuicaoService();
+    	return contribuicaoService.cadastrarContribuicao(contribuicao);
     }
     
     @PUT
@@ -47,7 +49,8 @@ public class ContribuicaoResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
 	public Contribuicao atualizarContribuicao(Contribuicao contribuicao){
-    	return new ContribuicaoService().atualizarContribuicao(contribuicao);
+    	ContribuicaoService contribuicaoService = new ContribuicaoService();
+    	return contribuicaoService.atualizarContribuicao(contribuicao);
     }
     
     @DELETE
@@ -55,7 +58,8 @@ public class ContribuicaoResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response excluirContribuicao(@PathParam("id") String id, Contribuicao contribuicao){
-    	new ContribuicaoService().excluirContribuicao(contribuicao);
+    	ContribuicaoService contribuicaoService = new ContribuicaoService();
+    	contribuicaoService.excluirContribuicao(contribuicao);
     	return Response.status(200).build();
     }
 	

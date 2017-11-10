@@ -1,5 +1,7 @@
 package org.cesed.map.meuchurrascoapp.resources;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -12,16 +14,19 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.cesed.map.meuchurrascoapp.entities.Evento;
+import org.cesed.map.meuchurrascoapp.entities.Usuario;
 import org.cesed.map.meuchurrascoapp.services.EventoService;
 
 @Path("evento")
 public class EventoResource {
 
+	private EventoService eventoService = new EventoService();
+	
 	@GET
     @Path("/getall")
     @Produces(MediaType.APPLICATION_JSON)
-    public Evento getAll() {
-        return new Evento();
+    public List<Evento> getAll() {
+        return eventoService.listarTodos();
     }
     
     @GET
@@ -31,13 +36,21 @@ public class EventoResource {
         return new Evento();
     }
     
+    @GET
+    @Path("/{id}/participantes")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Usuario> getParticipantesDoEvento(@PathParam("id") Integer idEvento){
+    	return eventoService.buscarParticipantesDoEvento(idEvento);
+    }
+    
     @POST
     @Path("/cadastrar")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Evento cadastrarEvento(Evento evento) {
-    	return new EventoService().cadastrarEvento(evento);
+    	return eventoService.cadastrarEvento(evento);
     }
+
     
     @PUT
     @Path("/atualizar/{id}")
