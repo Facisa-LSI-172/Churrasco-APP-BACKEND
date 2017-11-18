@@ -39,5 +39,9 @@ public class EventoService {
 	public Evento adicionarParticipanteNoEvento(Evento evento){
 		return eventoDao.adicionarParticipanteNoEvento(evento);
 	}
+
+	public List<Evento> getEventosPorOrganizador(Integer idOrganizador) {
+		return eventoDao.findEventoByOrganizador(idOrganizador);
+	}
 	
 }

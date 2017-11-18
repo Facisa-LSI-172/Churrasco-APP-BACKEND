@@ -58,16 +58,7 @@ public class UsuarioResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response login(Usuario usuario){
-		if (usuario.getEmail() == null || usuario.getPassword() == null) {
-			return Response.status(401).build();
-		}
-		
-		UsuarioDto dto = new UsuarioService().toUsuarioDto(usuario);
-		
-		dto.setToken(Jwts.builder().setSubject(usuario.getEmail())
-				.setIssuedAt(new Date()).signWith(SignatureAlgorithm.HS256, "secretkey").compact());
-		
-		return Response.status(200).entity(dto).build();
+		return new UsuarioService().login(usuario);
 	}
 
 	@PUT
