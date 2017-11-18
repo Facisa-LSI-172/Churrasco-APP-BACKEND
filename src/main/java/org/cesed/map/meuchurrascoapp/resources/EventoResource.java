@@ -76,5 +76,12 @@ public class EventoResource {
     	new EventoService().excluirEvento(evento);
     	return Response.status(200).build();
     }
-	
+    
+    @GET
+    @Path("/evento/{idOrganizador}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Evento> getEventosPorOrganizador(@PathParam("idOrganizador") Integer idOrganizador){
+    	return eventoService.getEventosPorOrganizador(idOrganizador);
+    }
 }

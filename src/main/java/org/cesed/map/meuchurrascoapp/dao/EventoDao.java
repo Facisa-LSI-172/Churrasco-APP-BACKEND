@@ -32,4 +32,12 @@ public class EventoDao extends GenericDao<Evento, Integer> {
 		return evento;
 	}
 
+	public List<Evento> findEventoByOrganizador(Integer idOrganizador) {
+		String sql = "SELECT e from Evento e where e.organizador.id = :idOrganizador";
+		Query query = getEntityManager().createQuery(sql);
+		query.setParameter("idOrganizador", idOrganizador);
+		List<Evento> lista = query.getResultList();
+		return lista;
+	}
+
 }
