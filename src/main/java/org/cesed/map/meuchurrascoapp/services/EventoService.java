@@ -7,6 +7,8 @@ import org.cesed.map.meuchurrascoapp.dao.UsuarioDao;
 import org.cesed.map.meuchurrascoapp.entities.Evento;
 import org.cesed.map.meuchurrascoapp.entities.Usuario;
 
+import com.google.gson.Gson;
+
 public class EventoService {
 	
 	private EventoDao eventoDao = new EventoDao();
@@ -16,8 +18,10 @@ public class EventoService {
 		return eventoDao.save(evento);
 	}
 	
-	public List<Evento> listarTodos(){
-		return eventoDao.findAll();
+	public String listarTodos(){
+		List<Evento> lista = eventoDao.findAll();
+		String json = new Gson().toJson(lista);
+		return json;
 	}
 	
 	public Evento getEventoPorId(Integer id){
@@ -42,6 +46,10 @@ public class EventoService {
 
 	public List<Evento> getEventosPorOrganizador(Integer idOrganizador) {
 		return eventoDao.findEventoByOrganizador(idOrganizador);
+	}
+
+	public Evento findById(Integer id) {
+		return eventoDao.findById(id);
 	}
 	
 }
