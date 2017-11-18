@@ -1,6 +1,7 @@
 package org.cesed.map.meuchurrascoapp.entities;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -36,13 +38,29 @@ public class Evento extends BaseBean {
 	private String descricao;
 
 	@OneToOne(fetch = FetchType.EAGER)
-	@Cascade({CascadeType.ALL})
+	@Cascade({ CascadeType.ALL })
 	@JoinColumn(name = "id_local")
 	private Local local;
 
 	@OneToOne
 	@JoinColumn(name = "id_usuario")
 	private Usuario organizador;
+
+	@OneToMany
+	@JoinColumn(name = "id_usuario")
+	private List<Usuario> listaParticipantes;
+
+	public List<Usuario> getListaParticipantes() {
+		return listaParticipantes;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public void setListaParticipantes(List<Usuario> listaParticipantes) {
+		this.listaParticipantes = listaParticipantes;
+	}
 
 	public Integer getId() {
 		return id;

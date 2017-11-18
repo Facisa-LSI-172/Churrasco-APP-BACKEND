@@ -51,6 +51,14 @@ public class EventoResource {
     	return eventoService.cadastrarEvento(evento);
     }
 
+    @POST
+    @Path("/participantes")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Evento cadastrarParticipantesNoEvento(Evento evento){
+    	return eventoService.adicionarParticipanteNoEvento(evento);
+    }
+    
     
     @PUT
     @Path("/atualizar/{id}")
