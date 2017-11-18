@@ -27,16 +27,8 @@ public class EventoDao extends GenericDao<Evento, Integer> {
 		for(Usuario u: evento.getListaParticipantes()){
 			listaSalvos.add(usuarioDao.save(u));
 		}
-		evento.setListaParticipantes(listaSalvos);
-		try{
-			this.beginTransaction();
-			getEntityManager().merge(evento);
-			this.commit();
-		}
-		catch(Exception ex){
-			this.rollback();
-			throw ex;
-		}
+		evento.setListaParticipantes(listaSalvos);	
+		update(evento);
 		return evento;
 	}
 

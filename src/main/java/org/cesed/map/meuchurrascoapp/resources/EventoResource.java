@@ -52,10 +52,10 @@ public class EventoResource {
     }
 
     @POST
-    @Path("/cadastrarparticipantes")
+    @Path("/participantes")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    private Evento cadastrarParticipantesNoEvento(Evento evento){
+    public Evento cadastrarParticipantesNoEvento(Evento evento){
     	return eventoService.adicionarParticipanteNoEvento(evento);
     }
     
