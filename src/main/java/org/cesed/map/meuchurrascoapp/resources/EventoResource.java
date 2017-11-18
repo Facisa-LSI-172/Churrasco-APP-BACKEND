@@ -25,15 +25,18 @@ public class EventoResource {
 	@GET
     @Path("/getall")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Evento> getAll() {
-        return eventoService.listarTodos();
+    public Response getAll() {
+ 		String json = eventoService.listarTodos();
+		
+        return Response.ok(json).build();
     }
     
     @GET
     @Path("/get/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Evento getEvento(@PathParam("id") String id) {
-        return new Evento();
+    public Response getEvento(@PathParam("id") Integer id) {
+    	Evento evento = eventoService.findById(id);
+        return Response.status(200).entity(evento).build();
     }
     
     @GET
@@ -78,7 +81,7 @@ public class EventoResource {
     }
     
     @GET
-    @Path("/evento/{idOrganizador}")
+    @Path("/organizador/{idOrganizador}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public List<Evento> getEventosPorOrganizador(@PathParam("idOrganizador") Integer idOrganizador){
