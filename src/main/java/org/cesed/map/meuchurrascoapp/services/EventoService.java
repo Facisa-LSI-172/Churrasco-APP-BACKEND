@@ -28,8 +28,18 @@ public class EventoService {
 		return eventoDao.findById(id);
 	}
 	
-	public Evento atualizarEvento(Evento Evento){
-		return eventoDao.update(Evento);
+	public Evento atualizarEvento(Evento evento){
+		UsuarioDao uDao = new UsuarioDao();
+		if(evento.getListaParticipantes() != null){
+			for(int i=0; i<evento.getListaParticipantes().size(); i++){
+				Usuario usr = uDao.findByEmail(evento.getListaParticipantes().get(i).getEmail());
+				if(usr != null){
+					evento.getListaParticipantes().remove(i);
+					evento.getListaParticipantes().add(i, usr);
+				}
+			}
+		}
+		return eventoDao.update(evento);
 	}
 	
 	public void excluirEvento(Evento Evento){
