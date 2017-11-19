@@ -15,6 +15,7 @@ public class EventoService {
 	
 	private EventoDao eventoDao = new EventoDao();
 	private UsuarioDao usuarioDao = new UsuarioDao();
+	private EmailService emailService = new EmailService();
 	
 	public Evento cadastrarEvento(Evento evento){
 		return eventoDao.save(evento);
@@ -41,7 +42,10 @@ public class EventoService {
 				}
 			}
 		}
-		return eventoDao.update(evento);
+		Evento e = eventoDao.update(evento);
+		emailService.enviarEmail(e.getListaParticipantes(), e);
+		
+		return e;
 	}
 	
 	public void excluirEvento(Evento Evento){
