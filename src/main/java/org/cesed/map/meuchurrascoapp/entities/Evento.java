@@ -37,16 +37,14 @@ public class Evento extends BaseBean {
 	@Column(name = "descricao")
 	private String descricao;
 
-	@OneToOne(fetch = FetchType.EAGER)
-	@Cascade({ CascadeType.ALL })
-	@JoinColumn(name = "id_local")
-	private Local local;
+	@Column(name = "local_evento")
+	private String local;
 
 	@OneToOne
 	@JoinColumn(name = "id_usuario")
 	private Usuario organizador;
 
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_usuario")
 	private List<Usuario> listaParticipantes;
 
@@ -90,11 +88,11 @@ public class Evento extends BaseBean {
 		this.descricao = descricao;
 	}
 
-	public Local getLocal() {
+	public String getLocal() {
 		return local;
 	}
 
-	public void setLocal(Local local) {
+	public void setLocal(String local) {
 		this.local = local;
 	}
 

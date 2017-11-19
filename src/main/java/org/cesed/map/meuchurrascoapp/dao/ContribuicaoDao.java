@@ -6,4 +6,5 @@ import org.cesed.map.meuchurrascoapp.entities.Contribuicao;
 public class ContribuicaoDao extends GenericDao<Contribuicao, Integer>{
 
 	
+	
 }
