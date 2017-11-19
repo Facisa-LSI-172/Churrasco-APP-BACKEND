@@ -2,6 +2,8 @@ package org.cesed.map.meuchurrascoapp.services;
 
 import java.util.List;
 
+import javax.ws.rs.core.Response;
+
 import org.cesed.map.meuchurrascoapp.dao.EventoDao;
 import org.cesed.map.meuchurrascoapp.dao.UsuarioDao;
 import org.cesed.map.meuchurrascoapp.entities.Evento;
@@ -63,7 +65,27 @@ public class EventoService {
 	}
 
 	public List<Evento> getEventosPorParticipante(Integer idParticipante) {
-		return eventoDao.findEventosByParticipante(idParticipante);
+		List<Evento> lista = eventoDao.findEventosByParticipante(idParticipante);
+		for(Evento e: lista){
+			for(Usuario u: e.getListaParticipantes()){
+				boolean status = usuarioDao.getStatusConfirmadoNoEvento(e, u);
+				u.setConfirmado(status);
+			}
+		}
+		return lista;
+	}
+	
+	public Response confirmarPresenca(Integer idUsuario, Integer idEvento){
+		try{
+			Evento evento = eventoDao.findById(idEvento);
+			Usuario usuario = usuarioDao.findById(idUsuario);
+			eventoDao.confirmarPresenca(usuario, evento);
+			return Response.status(200).build();
+		}
+		catch(Exception e){
+			return Response.status(500).build();
+		}
+		
 	}
 	
 }

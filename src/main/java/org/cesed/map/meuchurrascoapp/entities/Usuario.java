@@ -37,8 +37,8 @@ public class Usuario extends BaseBean {
 	@Column(name = "passwd")
 	private String password;
 
-	@Column(name = "confirmado")
-	private Boolean confirmado = false;
+	@Transient
+	private boolean confirmado;
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "usuario_contribuicao", joinColumns = {
@@ -50,11 +50,11 @@ public class Usuario extends BaseBean {
 		this.id = id;
 	}
 
-	public Boolean isConfirmado() {
+	public boolean isConfirmado() {
 		return confirmado;
 	}
 
-	public void setConfirmado(Boolean confirmado) {
+	public void setConfirmado(boolean confirmado) {
 		this.confirmado = confirmado;
 	}
 

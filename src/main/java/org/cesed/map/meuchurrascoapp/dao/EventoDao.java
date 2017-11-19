@@ -49,4 +49,16 @@ public class EventoDao extends GenericDao<Evento, Integer> {
 		return lista;
 	}
 
+	public void confirmarPresenca(Usuario usuario, Evento evento) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("update usuario_evento SET confirmado=true ");
+		sql.append("WHERE id_evento = :idEvento AND id_usuario = :idUsuario");
+		getEntityManager().getTransaction().begin();
+		Query query = getEntityManager().createNativeQuery(sql.toString());
+		query.setParameter("idEvento", evento.getId());
+		query.setParameter("idUsuario", usuario.getId());
+		int result = query.executeUpdate();
+		getEntityManager().getTransaction().commit();
+	}
+
 }
