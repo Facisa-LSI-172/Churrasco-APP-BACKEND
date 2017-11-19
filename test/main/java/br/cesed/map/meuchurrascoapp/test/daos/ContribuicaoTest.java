@@ -24,7 +24,6 @@ public class ContribuicaoTest {
 		u = uDao.save(u);
 		
 		c.setNome("carne de sol teste");
-		c.setContribuidor(u);
 		
 		Assert.assertNotNull(cDao.save(c));
 	}
@@ -42,7 +41,6 @@ public class ContribuicaoTest {
 		
 		Contribuicao c = new Contribuicao();
 		c.setNome("carne de sol teste");
-		c.setContribuidor(u);
 		
 		c = cDao.save(c);
 		
@@ -63,10 +61,8 @@ public class ContribuicaoTest {
 		u.setPassword("pass");
 		u.setEmail("teste@teste");
 		u = uDao.save(u);
-		
-		c.setNome("carne de sol teste");
-		c.setContribuidor(u);
-		
+			
+		c.setNome("carne de sol");
 		c = cDao.save(c);
 		
 		c.setNome("Carne de charque");
