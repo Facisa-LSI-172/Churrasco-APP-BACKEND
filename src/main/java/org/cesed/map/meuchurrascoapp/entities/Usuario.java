@@ -37,14 +37,29 @@ public class Usuario extends BaseBean {
 	@Column(name = "passwd")
 	private String password;
 
-	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-	@JoinTable(name="usuario_contribuicao",
-		    joinColumns={@JoinColumn(name="id_usuario", referencedColumnName="id_usuario")},
-		    inverseJoinColumns={@JoinColumn(name="id_contribuicao", referencedColumnName="id_contribuicao")})
+	@Column(name = "confirmado")
+	private Boolean confirmado = false;
+
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinTable(name = "usuario_contribuicao", joinColumns = {
+			@JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario") }, inverseJoinColumns = {
+					@JoinColumn(name = "id_contribuicao", referencedColumnName = "id_contribuicao") })
 	private List<Contribuicao> listaContribuicoes;
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Boolean isConfirmado() {
+		return confirmado;
+	}
+
+	public void setConfirmado(Boolean confirmado) {
+		this.confirmado = confirmado;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	public String getNome() {

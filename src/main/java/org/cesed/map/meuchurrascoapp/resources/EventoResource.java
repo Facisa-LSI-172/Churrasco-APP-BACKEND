@@ -2,6 +2,7 @@ package org.cesed.map.meuchurrascoapp.resources;
 
 import java.util.List;
 
+import javax.print.attribute.standard.Media;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -86,5 +87,13 @@ public class EventoResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Evento> getEventosPorOrganizador(@PathParam("idOrganizador") Integer idOrganizador){
     	return eventoService.getEventosPorOrganizador(idOrganizador);
+    }
+    
+    @GET
+    @Path("/participante/{idParticipante}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Evento> getEventosPorParticipante(@PathParam("idParticipante") Integer idParticipante){
+    	return eventoService.getEventosPorParticipante(idParticipante);
     }
 }

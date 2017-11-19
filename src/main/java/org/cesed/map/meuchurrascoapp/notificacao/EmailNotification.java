@@ -2,6 +2,8 @@ package org.cesed.map.meuchurrascoapp.notificacao;
 
 import java.io.IOException;
 
+import org.cesed.map.meuchurrascoapp.entities.Evento;
+
 import com.sendgrid.Content;
 import com.sendgrid.Email;
 import com.sendgrid.Mail;
@@ -12,16 +14,21 @@ import com.sendgrid.SendGrid;
 
 public class EmailNotification {
 	
-	public void sendEmail() throws IOException{
+	public void sendEmail(String toEmail, Evento evento) throws IOException{
 		Email from = new Email("davi.leal737@gmail.com");
-	    String subject = "Sending with SendGrid is Fun";
-	    Email to = new Email("davi.leal737@hotmail.com");
-	    Content content = new Content("text/plain", "and easy to do anywhere, even with Java");
+	    String subject = "Meu churrasco App - Convite";
+	    Email to = new Email(toEmail);
+	    
+	    StringBuilder str = new StringBuilder();
+	    
+	    str.append("Você foi convidado para participar de um evento!");
+	    
+	    Content content = new Content("text/plain", str.toString());
 	    Mail mail = new Mail(from, subject, to, content);
 
-	    SendGrid sg = new SendGrid(System.getenv("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"));
-	    Request request = new Request();
+	    SendGrid sg = new SendGrid(System.getenv("SENDGRID_API_KEY"));
 	    
+	    Request request = new Request();
 	    try {
 	      request.setMethod(Method.POST);
 	      request.setEndpoint("mail/send");
@@ -30,8 +37,7 @@ public class EmailNotification {
 	      System.out.println(response.getStatusCode());
 	      System.out.println(response.getBody());
 	      System.out.println(response.getHeaders());
-	    } 
-	    catch (IOException ex) {
+	    } catch (IOException ex) {
 	      throw ex;
 	    }
 	}
