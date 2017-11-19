@@ -64,7 +64,7 @@ public class EventoResource {
     
     
     @PUT
-    @Path("/atualizar/{id}")
+    @Path("/atualizar")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
 	public Evento atualizarEvento(Evento evento){

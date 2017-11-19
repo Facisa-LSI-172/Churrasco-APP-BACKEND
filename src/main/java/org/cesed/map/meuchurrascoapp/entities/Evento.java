@@ -3,19 +3,19 @@ package org.cesed.map.meuchurrascoapp.entities;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.cesed.map.meuchurrascoapp.base.BaseBean;
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table(name = "evento")
@@ -44,8 +44,10 @@ public class Evento extends BaseBean {
 	@JoinColumn(name = "id_usuario")
 	private Usuario organizador;
 
-	@OneToMany(fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_usuario")
+	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinTable(name="usuario_evento",
+		    joinColumns={@JoinColumn(name="id_evento", referencedColumnName="id_evento")},
+		    inverseJoinColumns={@JoinColumn(name="id_usuario", referencedColumnName="id_usuario")})
 	private List<Usuario> listaParticipantes;
 
 	public List<Usuario> getListaParticipantes() {
