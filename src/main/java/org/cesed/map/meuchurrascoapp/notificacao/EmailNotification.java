@@ -15,7 +15,7 @@ import com.sendgrid.SendGrid;
 public class EmailNotification {
 	
 	public void sendEmail(String toEmail, Evento evento) throws IOException{
-		Email from = new Email("davi.leal737@gmail.com");
+		Email from = new Email("davi.leal737@hotmail.com");
 	    String subject = "Meu churrasco App - Convite";
 	    Email to = new Email(toEmail);
 	    
