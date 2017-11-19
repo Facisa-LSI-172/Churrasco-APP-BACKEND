@@ -1,8 +1,5 @@
 package org.cesed.map.meuchurrascoapp.resources;
 
-import java.nio.Buffer;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -18,10 +15,8 @@ import javax.ws.rs.core.Response;
 
 import org.cesed.map.meuchurrascoapp.dto.UsuarioDto;
 import org.cesed.map.meuchurrascoapp.entities.Usuario;
+import org.cesed.map.meuchurrascoapp.notificacao.EmailNotification;
 import org.cesed.map.meuchurrascoapp.services.UsuarioService;
-
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 
 @Path("usuario")
 public class UsuarioResource {
@@ -47,7 +42,7 @@ public class UsuarioResource {
 	@Path("/cadastrar")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response cadastrarUsuario(Usuario usuario) {
+	public Response cadastrarUsuario(Usuario usuario){
 		Usuario usuarioCreated = new UsuarioService().cadastrarUsuario(usuario);
 		UsuarioDto dto = new UsuarioService().toUsuarioDto(usuarioCreated);
 		return Response.status(200).entity(dto).build();
