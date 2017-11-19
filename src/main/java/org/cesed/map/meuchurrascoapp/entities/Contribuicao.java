@@ -4,9 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.cesed.map.meuchurrascoapp.base.BaseBean;
@@ -24,10 +21,6 @@ public class Contribuicao extends BaseBean{
 	
 	@Column(name = "nome")
 	private String nome;
-	
-	@OneToOne
-	@JoinColumn(name="id_usuario")
-	private Usuario contribuidor;
 
 	public Integer getId() {
 		return id;
@@ -43,14 +36,6 @@ public class Contribuicao extends BaseBean{
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public Usuario getContribuidor() {
-		return contribuidor;
-	}
-
-	public void setContribuidor(Usuario contribuidor) {
-		this.contribuidor = contribuidor;
 	}
 	
 }
