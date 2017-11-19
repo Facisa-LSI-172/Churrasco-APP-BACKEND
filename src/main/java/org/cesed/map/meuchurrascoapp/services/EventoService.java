@@ -61,5 +61,9 @@ public class EventoService {
 	public Evento findById(Integer id) {
 		return eventoDao.findById(id);
 	}
+
+	public List<Evento> getEventosPorParticipante(Integer idParticipante) {
+		return eventoDao.findEventosByParticipante(idParticipante);
+	}
 	
 }
